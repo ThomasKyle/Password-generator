@@ -1,4 +1,5 @@
 // Assignment code here
+
 // Array for the characters 
 const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90)
 const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122)
@@ -11,21 +12,38 @@ const SYMBOLS_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
     )
 )
 
-//varible declaration 
-var confirmLength = "";
-var confirmSpecialCharacter;
-var confrimNumberCharacter;
-var confrimLowerCase;confrimUpperCase;
-var confrimUpperCase;
+// ask them how many characters they want to use
+var generatePassword = function(){
+    var promptlength = window.prompt("How many characters do you want to use?");
 
-
-function arrayFromLowToHigh(low, high){
-    const array = []
-    for (let i = low; i <= high; i++){
-        array.push(i)
+    //validate prompt answer
+    if (promptlength <= 7 || >= 128){
+    window.alert("You're password is " + promptlength + " long.");
+    } 
+    else{
+        window.alert ("You're password must be between 8 - 128 characters.");
     }
-    return array
+
+    //confrim special characters and numbers 
+    var UPPERCASE_CHAR_CODES = window.confirm("Do you want to use Uppercase letters?");
+    var SYMBOLS_CHAR_CODES = window.confrim ("Do you want to use Symbols?");
+    var NUMBER_CHAR_CODES = window.confrim("Do you want to use Numbers?");
 }
+
+if (confrimUPPERCASE_CHAR_CODES){
+passwordCharacters = passwordCharacters.concat(UPPERCASE_CHAR_CODES)
+}
+
+if (confrimSYMBOLS_CHAR_CODES){
+    passwordCharacters = passwordCharacters.concat(SYMBOLS_CHAR_CODES)
+}
+
+if (confrimNUMBER_CHAR_CODES){
+    passwordCharacters = passwordCharacters.concat(NUMBER_CHAR_CODES)
+}
+
+console.log(passwordCharacters)
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
