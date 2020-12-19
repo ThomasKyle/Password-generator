@@ -22,6 +22,34 @@ var generatePassword = function() {
     }
     window.alert("Your password is " + passwordLength + " long!"); 
 
+    var confirmLowerCase = window.confirm("Would you like to use Lower cases?");
+    var confirmUpperCase = window.confirm("Would you like to use Upper cases?");
+    var confirmSpecialCharacter = window.confirm("Would you like to use Special characters?");
+    var confirmNumber = window.confirm("would you like to use Numbers?");
+
+    while(confirmLowerCase === false && confirmUpperCase === false && confirmSpecialCharacter === false && confirmNumber === false){
+        window.alert("You must choose a parameter!")
+        window.confirmLowerCase("Would you like to use Lower cases?");
+        window.confirmUpperCase("Would you like to use Upper cases?");
+         window.confirmSpecialCharacter("Would you like to use Special characters?");
+        window.confirmNumber("would you like to use Numbers?");
+     }
+
+     if (confirmLowerCase){
+         passwordCharacters = passwordCharacters.concat (lowerCase)
+     }
+
+     if (confirmUpperCase){
+        passwordCharacters = passwordCharacters.concat(upperCase)
+     }
+
+     if (confirmSpecialCharacter){
+         passwordCharacters = passwordCharacters.concat(specialCharacter)
+     }
+
+     if (confirmNumber){
+         passwordCharacters = passwordCharacters.concat(number)
+     }
 }
 
 
