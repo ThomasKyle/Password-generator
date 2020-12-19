@@ -14,6 +14,7 @@ var confirmNumber;
 
 //generate password function
 var generatePassword = function() {
+    //password Length
     var passwordLength = window.prompt("How long do you want your password to be? It must be between 8 and 128 characters.");
     while (passwordLength <=7 || passwordLength >= 128){
         window.alert("Your password must be between 8 and 128 charcters!");
@@ -21,7 +22,7 @@ var generatePassword = function() {
         return passwordLength;
     }
     window.alert("Your password is " + passwordLength + " long!"); 
-
+//password parameters 
     var confirmLowerCase = window.confirm("Would you like to use Lower cases?");
     var confirmUpperCase = window.confirm("Would you like to use Upper cases?");
     var confirmSpecialCharacter = window.confirm("Would you like to use Special characters?");
@@ -34,22 +35,34 @@ var generatePassword = function() {
          window.confirmSpecialCharacter("Would you like to use Special characters?");
         window.confirmNumber("would you like to use Numbers?");
      }
+     var passwordCharacters = {}
 
-     if (confirmLowerCase){
+     if (confirmLowerCase == true){
          passwordCharacters = passwordCharacters.concat (lowerCase)
      }
 
-     if (confirmUpperCase){
+     if (confirmUpperCase == true){
         passwordCharacters = passwordCharacters.concat(upperCase)
      }
 
-     if (confirmSpecialCharacter){
+    if (confirmSpecialCharacter == true){
          passwordCharacters = passwordCharacters.concat(specialCharacter)
      }
 
-     if (confirmNumber){
+     if (confirmNumber == true){
          passwordCharacters = passwordCharacters.concat(number)
      }
+
+     console.log(passwordCharacters)
+
+     var randomPassword = ""
+
+     for (i = 0; i < passwordLength; i++){
+         randomPassword = randomPassword + passwordCharacters(Math.floor(Math.random() * passwordCharacters.length));
+        console.log(randomPassword)
+     }
+     return randomPassword;
+
 }
 
 
