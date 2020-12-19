@@ -4,7 +4,27 @@
 var lowerCase = ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
 var upperCase = ("A", "B", "C", "D", "E", "F","G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 var number = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
-var specialCharacter = ("!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~")
+var specialCharacter = ("!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~");
+
+//varible decleration
+var confirmLowerCase;
+var confirmUpperCase;
+var confirmSpecialCharacter;
+var confirmNumber;
+
+//generate password function
+var generatePassword = function() {
+    var passwordLength = window.prompt("How long do you want your password to be? It must be between 8 and 128 characters.");
+    while (passwordLength <=7 || passwordLength >= 128){
+        window.alert("Your password must be between 8 and 128 charcters!");
+        window.prompt("How long do you want your password to be? It must be between 8 and 128 characters.");
+        return passwordLength;
+    }
+    window.alert("Your password is " + passwordLength + " long!"); 
+
+}
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -19,4 +39,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
