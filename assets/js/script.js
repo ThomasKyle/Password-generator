@@ -30,9 +30,10 @@ var generatePassword = function() {
      for (i = 0; i < passwordLength; i++){
          randomPassword = randomPassword + passwordCharacters(Math.floor(Math.random() * passwordCharacters.length));
         console.log(randomPassword)
+        
+        return randomPassword;
      }
-     return randomPassword;
-
+     writePassword();
 }
 
 //password parameters 
@@ -81,4 +82,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);
+generateBtn.addEventListener("click", writePassword);
