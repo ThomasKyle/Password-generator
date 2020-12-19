@@ -18,42 +18,12 @@ var generatePassword = function() {
     var passwordLength = window.prompt("How long do you want your password to be? It must be between 8 and 128 characters.");
     while (passwordLength <=7 || passwordLength >= 128){
         window.alert("Your password must be between 8 and 128 charcters!");
-        window.prompt("How long do you want your password to be? It must be between 8 and 128 characters.");
-        return passwordLength;
+        generatePassword();
+        break;
     }
     window.alert("Your password is " + passwordLength + " long!"); 
-//password parameters 
-    var confirmLowerCase = window.confirm("Would you like to use Lower cases?");
-    var confirmUpperCase = window.confirm("Would you like to use Upper cases?");
-    var confirmSpecialCharacter = window.confirm("Would you like to use Special characters?");
-    var confirmNumber = window.confirm("would you like to use Numbers?");
 
-    while(confirmLowerCase === false && confirmUpperCase === false && confirmSpecialCharacter === false && confirmNumber === false){
-        window.alert("You must choose a parameter!")
-        window.confirmLowerCase("Would you like to use Lower cases?");
-        window.confirmUpperCase("Would you like to use Upper cases?");
-         window.confirmSpecialCharacter("Would you like to use Special characters?");
-        window.confirmNumber("would you like to use Numbers?");
-     }
-     var passwordCharacters = {}
-
-     if (confirmLowerCase == true){
-         passwordCharacters = passwordCharacters.concat (lowerCase)
-     }
-
-     if (confirmUpperCase == true){
-        passwordCharacters = passwordCharacters.concat(upperCase)
-     }
-
-    if (confirmSpecialCharacter == true){
-         passwordCharacters = passwordCharacters.concat(specialCharacter)
-     }
-
-     if (confirmNumber == true){
-         passwordCharacters = passwordCharacters.concat(number)
-     }
-
-     console.log(passwordCharacters)
+    passwordParameters();
 
      var randomPassword = ""
 
@@ -65,7 +35,38 @@ var generatePassword = function() {
 
 }
 
+//password parameters 
+var passwordParameters = function(){
+var confirmLowerCase = window.confirm("Would you like to use Lower cases?");
+var confirmUpperCase = window.confirm("Would you like to use Upper cases?");
+var confirmSpecialCharacter = window.confirm("Would you like to use Special characters?");
+var confirmNumber = window.confirm("would you like to use Numbers?");
 
+while(confirmLowerCase === false && confirmUpperCase === false && confirmSpecialCharacter === false && confirmNumber === false){
+    window.alert("You muust choose at least one Parameter.")
+passwordParameters();
+ }
+ var passwordCharacters = {}
+
+ if (confirmLowerCase == true){
+     passwordCharacters = passwordCharacters.concat (lowerCase)
+ }
+
+ if (confirmUpperCase == true){
+    passwordCharacters = passwordCharacters.concat(upperCase)
+ }
+
+if (confirmSpecialCharacter == true){
+     passwordCharacters = passwordCharacters.concat(specialCharacter)
+ }
+
+ if (confirmNumber == true){
+     passwordCharacters = passwordCharacters.concat(number)
+ }
+
+ console.log(passwordCharacters)
+
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
