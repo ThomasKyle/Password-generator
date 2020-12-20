@@ -26,6 +26,7 @@ var generatePassword = function(){
     }
 
     window.alert(`Your password will have ${passwordLength} characters.`);
+    
 
     var confirmLowerCase = window.confirm("Would you like to use Lower cases?");
     var confirmUpperCase = window.confirm("Would you like to use Upper cases?");
@@ -41,6 +42,8 @@ var generatePassword = function(){
         var confirmNumber = window.confirm("would you like to use Numbers?");
 
     }
+
+    var passwordCharacters = [];
 
     if(confirmLowerCase){
         passwordCharacters = passwordCharacters.concat(lowerCase);
@@ -63,9 +66,10 @@ var generatePassword = function(){
     var randomPassword = "";
 
     for(var i = 0; i < passwordLength; i++){
-        randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
-        return randomPassword;
+        randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordLength.length)];
+        console.log(randomPassword)
     }
+    return randomPassword;
 
 }
 
