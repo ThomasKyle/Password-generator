@@ -7,6 +7,7 @@ var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var specialCharacter = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
 
 //varible decleration
+
 var confirmLowerCase;
 var confirmUpperCase;
 var confirmSpecialCharacter;
@@ -18,24 +19,21 @@ var passwordCharacters = [];
 var generatePassword = function() {
     //password Length
     var passwordLength = window.prompt("How long do you want your password to be? It must be between 8 and 128 characters.");
-    while (passwordLength <=7 || passwordLength >= 128){
+    console.log(passwordLength);
+    while (passwordLength <=7 || passwordLength >= 129){
         window.alert("Your password must be between 8 and 128 charcters!");
         generatePassword();
         break;
     }
+    
     window.alert("Your password is " + passwordLength + " long!"); 
 
     passwordParameters();
 
-     var randomPassword = ""
+    randomPassword();
 
-     for (i = 0; i < passwordLength; i++){
-         randomPassword = randomPassword + passwordCharacters(Math.floor(Math.random() * passwordCharacters.length));
-        console.log(randomPassword)
-        
-        return randomPassword;
-     }
      writePassword();
+
 };
 
 //password parameters 
@@ -51,25 +49,38 @@ while(confirmLowerCase === false && confirmUpperCase === false && confirmSpecial
 passwordParameters();
  }
 
- if (confirmLowerCase == true){
+ if (confirmLowerCase){
      passwordCharacters = passwordCharacters.concat (lowerCase);
  }
 
- if (confirmUpperCase == true){
+ if (confirmUpperCase){
     passwordCharacters = passwordCharacters.concat(upperCase);
  }
 
-if (confirmSpecialCharacter == true){
+if (confirmSpecialCharacter){
      passwordCharacters = passwordCharacters.concat(specialCharacter);
  }
 
- if (confirmNumber == true){
+ if (confirmNumber){
      passwordCharacters = passwordCharacters.concat(number);
  }
 
  console.log(passwordCharacters);
+ 
+ return randomPassword;
 
 };
+
+var randomPassword = function(){
+    var randomPassword = "";
+
+    for (i = 0; i < passwordLength; i++){
+        randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+       console.log(randomPassword);
+       
+       return randomPassword;
+    }
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
