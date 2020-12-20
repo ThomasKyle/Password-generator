@@ -8,6 +8,7 @@ var specialCharacter = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "
 
 //varible decleration
 
+var passwordLength = "";
 var confirmLowerCase;
 var confirmUpperCase;
 var confirmSpecialCharacter;
@@ -16,70 +17,60 @@ var confirmNumber;
 var passwordCharacters = [];
 
 //generate password function
-var generatePassword = function() {
-    //password Length
-    var passwordLength = window.prompt("How long do you want your password to be? It must be between 8 and 128 characters.");
-    console.log(passwordLength);
-    while (passwordLength <=7 || passwordLength >= 129){
-        window.alert("Your password must be between 8 and 128 charcters!");
-        generatePassword();
-        break;
+var generatePassword = function(){
+    var passwordLength = window.prompt("How many characters do you want? It has to be between 8-128");
+
+    while(passwordLength <= 7 || passwordLength >= 128){
+        window.alert("You must choose between 8 and 128 characters!");
+        var passwordLength = window.prompt("How many characters do you want? It has to be between 8-128");
     }
+
+    window.alert(`Your password will have ${passwordLength} characters.`);
     
-    window.alert("Your password is " + passwordLength + " long!"); 
 
-    passwordParameters();
+    var confirmLowerCase = window.confirm("Would you like to use Lower cases?");
+    var confirmUpperCase = window.confirm("Would you like to use Upper cases?");
+    var confirmSpecialCharacter = window.confirm("Would you like to use Special characters?");
+    var confirmNumber = window.confirm("would you like to use Numbers?");
 
-    randomPassword();
+    while(confirmLowerCase === false && confirmUpperCase === false && confirmSpecialCharacter === false && confirmNumber === false){
+        window.alert("You must choose at least one parameter!");
 
-     writePassword();
+        var confirmLowerCase = window.confirm("Would you like to use Lower cases?");
+        var confirmUpperCase = window.confirm("Would you like to use Upper cases?");
+        var confirmSpecialCharacter = window.confirm("Would you like to use Special characters?");
+        var confirmNumber = window.confirm("would you like to use Numbers?");
 
-};
+    }
 
-//password parameters 
-var passwordParameters = function(){
-var confirmLowerCase = window.confirm("Would you like to use Lower cases?");
-var confirmUpperCase = window.confirm("Would you like to use Upper cases?");
-var confirmSpecialCharacter = window.confirm("Would you like to use Special characters?");
-var confirmNumber = window.confirm("would you like to use Numbers?");
+    var passwordCharacters = [];
 
-while(confirmLowerCase === false && confirmUpperCase === false && confirmSpecialCharacter === false && confirmNumber === false){
-    window.alert("You muust choose at least one Parameter.")
+    if(confirmLowerCase){
+        passwordCharacters = passwordCharacters.concat(lowerCase)
+    }
 
-passwordParameters();
- }
+    if(confirmUpperCase){
+        passwordCharacters = passwordCharacters.concat(upperCase)
+    }
 
- if (confirmLowerCase){
-     passwordCharacters = passwordCharacters.concat (lowerCase);
- }
+    if(confirmSpecialCharacter){
+        passwordCharacters = passwordCharacters.concat(specialCharacter)
+    }
 
- if (confirmUpperCase){
-    passwordCharacters = passwordCharacters.concat(upperCase);
- }
+    if(confirmNumber){
+        passwordCharacters = passwordCharacters.concat(number)
+    }
 
-if (confirmSpecialCharacter){
-     passwordCharacters = passwordCharacters.concat(specialCharacter);
- }
+    console.log(passwordCharacters);
 
- if (confirmNumber){
-     passwordCharacters = passwordCharacters.concat(number);
- }
-
- console.log(passwordCharacters);
- 
- return randomPassword;
-
-};
-
-var randomPassword = function(){
     var randomPassword = "";
 
-    for (i = 0; i < passwordLength; i++){
+    for(var i = 0; i < passwordLength; i++){
         randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
-       console.log(randomPassword);
-       
-       return randomPassword;
+        console.log(randomPassword)
     }
+    return randomPassword;
+
 }
 
 // Get references to the #generate element
