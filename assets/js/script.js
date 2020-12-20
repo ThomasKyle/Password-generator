@@ -1,16 +1,18 @@
 // Assignment code here
 
 //Arrays for the password generator
-var lowerCase = ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
-var upperCase = ("A", "B", "C", "D", "E", "F","G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
-var number = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
-var specialCharacter = ("!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~");
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+var specialCharacter = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
 
 //varible decleration
 var confirmLowerCase;
 var confirmUpperCase;
 var confirmSpecialCharacter;
 var confirmNumber;
+
+var passwordCharacters = [];
 
 //generate password function
 var generatePassword = function() {
@@ -34,7 +36,7 @@ var generatePassword = function() {
         return randomPassword;
      }
      writePassword();
-}
+};
 
 //password parameters 
 var passwordParameters = function(){
@@ -45,29 +47,29 @@ var confirmNumber = window.confirm("would you like to use Numbers?");
 
 while(confirmLowerCase === false && confirmUpperCase === false && confirmSpecialCharacter === false && confirmNumber === false){
     window.alert("You muust choose at least one Parameter.")
+
 passwordParameters();
  }
- var passwordCharacters = {}
 
  if (confirmLowerCase == true){
-     passwordCharacters = passwordCharacters.concat (lowerCase)
+     passwordCharacters = passwordCharacters.concat (lowerCase);
  }
 
  if (confirmUpperCase == true){
-    passwordCharacters = passwordCharacters.concat(upperCase)
+    passwordCharacters = passwordCharacters.concat(upperCase);
  }
 
 if (confirmSpecialCharacter == true){
-     passwordCharacters = passwordCharacters.concat(specialCharacter)
+     passwordCharacters = passwordCharacters.concat(specialCharacter);
  }
 
  if (confirmNumber == true){
-     passwordCharacters = passwordCharacters.concat(number)
+     passwordCharacters = passwordCharacters.concat(number);
  }
 
- console.log(passwordCharacters)
+ console.log(passwordCharacters);
 
-}
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
